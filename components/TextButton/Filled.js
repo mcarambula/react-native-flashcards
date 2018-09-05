@@ -3,8 +3,8 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function Filled ({ children, onPress, style = {} }) {
     return (
-        <TouchableOpacity onPress={onPress} style={styles.btn}>
-            <Text style={[styles.text, style]}>{children}</Text>
+        <TouchableOpacity onPress={onPress} style={[styles.btn, style]}>
+            <Text style={[styles.text]}>{children}</Text>
         </TouchableOpacity>
     )
 }
