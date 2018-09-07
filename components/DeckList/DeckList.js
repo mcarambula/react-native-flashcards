@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text, ScrollView, StyleSheet, View } from 'react-native';
+import { connect } from 'react-redux';
+import { Text, FlatList, StyleSheet, View, TouchableOpacity } from 'react-native';
 import DeckCard from '../Deck/DeckCard';
+import styles from './DeckList.style';
 
 const decks = [
     {
@@ -15,29 +17,50 @@ const decks = [
         title: 'new deck 2',
         cards: 2
     },
-]
+    {
+        title: 'new deck 3',
+        cards: 2
+    },
+    {
+        title: 'new deck 4',
+        cards: 2
+    },
+    {
+        title: 'new deck 5',
+        cards: 2
+    }
+];
 
-export default function DeckList () {
-    return (
-        <ScrollView>
-            {
-                decks.map((deck, index) => (
-                    <View key={index}>
-                        <DeckCard
-                            title={deck.title}
-                            howMany={deck.cards}
-                            cardStyle={styles.card}
-                        />
-                        <View style={{height: 1, backgroundColor: '#000'}} />
-                    </View>
-                ))
-            }
-        </ScrollView>
-    )
+class DeckList extends React.Component  {
+    onPressItem = (item) => {
+        this.props.navigation.navigate('Deck');
+    }
+    render() {
+        const { decksa } = this.props.decks;
+        console.log('-------');
+        console.log(this.props);
+        return (
+            <FlatList style={styles.deckListContainer}
+                data = { decks }
+                keyExtractor={ item => item.title }
+                renderItem = {({item}) => {
+                    return (
+                        <TouchableOpacity style={styles.card} onPress={() => this.onPressItem(item)}>
+                            <DeckCard
+                                item={item}
+                                fontSize={24} />
+                        </TouchableOpacity>
+                    )
+                }}
+            />
+        )
+    }
 }
 
-const styles = StyleSheet.create({
-    card: {
-        padding: 40,
+function mapStateToProps({ decks }) {
+    return {
+        decks: decks
     }
-})
+}
+
+export default connect(mapStateToProps)(DeckList);

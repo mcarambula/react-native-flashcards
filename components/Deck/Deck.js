@@ -9,7 +9,7 @@ import generalStyles from '../General/General.style';
 export default function Deck () {
     return (
         <View style={generalStyles.container}>
-            <DeckCard title='udacicards' howMany={3}/>
+            <DeckCard item={{title: 'udacity', howMany: 3}} />
             <View style={generalStyles.btnContainer}>
                 <Outlined>Add Card</Outlined>
                 <Filled>Start Quiz</Filled>
