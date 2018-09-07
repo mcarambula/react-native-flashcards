@@ -6,8 +6,6 @@ import * as API from '../utils/api';
 export const handleInitialData = () => (dispatch) => {
     return API.retrieveDecks()
             .then((decks) => {
-                console.log('aaaaaa');
-                console.log(decks);
                 dispatch(getDecks(decks));
             });
 }

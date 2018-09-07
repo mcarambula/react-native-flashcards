@@ -4,44 +4,15 @@ import { Text, FlatList, StyleSheet, View, TouchableOpacity } from 'react-native
 import DeckCard from '../Deck/DeckCard';
 import styles from './DeckList.style';
 
-const decks = [
-    {
-        title: 'udacicards',
-        cards: 3
-    },
-    {
-        title: 'new deck',
-        cards: 0
-    },
-    {
-        title: 'new deck 2',
-        cards: 2
-    },
-    {
-        title: 'new deck 3',
-        cards: 2
-    },
-    {
-        title: 'new deck 4',
-        cards: 2
-    },
-    {
-        title: 'new deck 5',
-        cards: 2
-    }
-];
-
 class DeckList extends React.Component  {
     onPressItem = (item) => {
-        this.props.navigation.navigate('Deck');
+        this.props.navigation.navigate('Deck', { deckId: item.title });
     }
     render() {
-        const { decksa } = this.props.decks;
-        console.log('-------');
-        console.log(this.props);
+        const { decks } = this.props;
         return (
             <FlatList style={styles.deckListContainer}
-                data = { decks }
+                data = { Object.values(decks) }
                 keyExtractor={ item => item.title }
                 renderItem = {({item}) => {
                     return (
@@ -59,7 +30,7 @@ class DeckList extends React.Component  {
 
 function mapStateToProps({ decks }) {
     return {
-        decks: decks
+        decks
     }
 }
 

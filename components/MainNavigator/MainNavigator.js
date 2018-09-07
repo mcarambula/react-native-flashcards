@@ -91,7 +91,7 @@ const IOSTab = createBottomTabNavigator({
 
 const Navigator = createStackNavigator({
         Home: {
-            screen: (Platform.OS === 'ios') ? IOSTab : AndroidTab
+            screen: (Platform.OS === 'ios') ? IOSTab : AndroidTab,
         },
         Deck: {
             screen: Deck,
@@ -108,8 +108,12 @@ const Navigator = createStackNavigator({
         AddCard: {
             screen: AddCard
         }
-    }
-);
+    },
+    {
+        navigationOptions: {
+            header: null
+        }
+});
 
 class MainNavigator extends React.Component {
 

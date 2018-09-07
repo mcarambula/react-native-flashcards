@@ -3,7 +3,8 @@ import { Text, View, StyleSheet } from 'react-native';
 import styles from './DeckCard.style';
 
 export default function DeckCard ({ item }) {
-    const { title, howMany, cardStyle } = item;
+    const { title, cardStyle } = item;
+    const howMany = (item.questions) ? item.questions.length : 0;
     return (
         <View style={[styles.card, cardStyle]}>
             <Text style={styles.title}>{title}</Text>
