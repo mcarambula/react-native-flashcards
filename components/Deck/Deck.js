@@ -16,7 +16,7 @@ class Deck extends React.Component {
                 <DeckCard item={deck} />
                 <View style={generalStyles.btnContainer}>
                     <Outlined>Add Card</Outlined>
-                    <Filled>Start Quiz</Filled>
+                    <Filled style={{marginTop: 10}}>Start Quiz</Filled>
                 </View>
             </View>
         )
