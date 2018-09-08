@@ -130,6 +130,7 @@ class MainNavigator extends React.Component {
         }
 
         return (
+            //<NewDeck />
             <Navigator style={{flex: 1, backgroundColor: 'red'}}/>
         )
     }

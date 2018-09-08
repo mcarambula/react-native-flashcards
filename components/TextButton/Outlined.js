@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
+import styles from './TextButton.style';
 
 export default function TextButton ({ children, onPress, style = {} }) {
     return (
@@ -8,20 +9,3 @@ export default function TextButton ({ children, onPress, style = {} }) {
         </TouchableOpacity>
     )
 }
-
-const styles = StyleSheet.create({
-    btn: {
-        borderColor: 'black',
-        borderWidth: 2,
-        borderRadius: 5,
-        margin: 10,
-    },
-    text: {
-        textAlign: 'center',
-        color: 'black',
-        padding: 55,
-        paddingTop: 15,
-        paddingBottom: 15,
-        fontSize: 18
-    }
-})
