@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, Platform } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -11,7 +11,7 @@ import middleware from './middleware';
 
 const store = createStore(reducer, middleware);
 
-export default class App extends React.Component {
+export default class App extends Component {
     render() {
         return (
           <Provider store={store}>

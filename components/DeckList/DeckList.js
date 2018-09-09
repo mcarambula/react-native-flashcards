@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, FlatList, StyleSheet, View, TouchableOpacity } from 'react-native';
 import DeckCard from '../Deck/DeckCard';
 import styles from './DeckList.style';
 import * as nav from '../../utils/navigation';
 
-class DeckList extends React.Component  {
+class DeckList extends Component  {
     onPressItem = (item) => {
         this.props.navigation.navigate(nav.DECK_VIEW_KEY, { deckId: item.title });
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View } from 'react-native';
 import * as appColors from '../../utils/appColors';
@@ -7,7 +7,7 @@ import { addQuestion } from '../../actions';
 import { createQuestion } from '../../utils/api';
 import styles from './AddCard.style';
 
-class AddCard extends React.Component {
+class AddCard extends Component {
     state = {
         question: '',
         answer:'',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, TextInput, KeyboardAvoidingView } from 'react-native';
 import Filled from '../TextButton/Filled';
@@ -9,7 +9,7 @@ import * as appColors from '../../utils/appColors';
 import generalStyles from '../General/General.style';
 import * as nav from '../../utils/navigation';
 
-class NewDeck extends React.Component {
+class NewDeck extends Component {
     state = {
         title: ''
     }

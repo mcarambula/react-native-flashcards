@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { Ionicons, Entypo } from '@expo/vector-icons';
@@ -120,7 +120,7 @@ const Navigator = createStackNavigator({
         }
 });
 
-class MainNavigator extends React.Component {
+class MainNavigator extends Component {
 
     componentDidMount() {
         /* Retreiving initial information for the application */

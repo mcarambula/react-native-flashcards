@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, StyleSheet } from 'react-native';
 import Outlined from '../TextButton/Outlined';
@@ -8,7 +8,7 @@ import styles from './Deck.style';
 import generalStyles from '../General/General.style';
 import * as nav from '../../utils/navigation';
 
-class Deck extends React.Component {
+class Deck extends Component {
     showCardView = (deck) => {
         this.props.navigation.navigate(nav.ADD_CARD_VIEW_KEY, {'deckId': deck.title});
     }
