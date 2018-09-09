@@ -19,7 +19,7 @@ class Deck extends Component {
         const { deckId } = this.props.navigation.state.params;
         const deck = this.props.decks[deckId];
         return (
-            <View style={[generalStyles.container, styles.deckContainer]}>
+            <View style={[generalStyles.container, generalStyles.insideContainer]}>
                 <DeckCard item={deck} />
                 <View style={generalStyles.btnContainer}>
                     <Outlined onPress={() => this.showCardView(deck)}>Add Card</Outlined>

@@ -2,12 +2,12 @@ import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import styles from './Quiz.style';
 
-export default function Question () {
+export default function Question ({item, onPress}) {
     return (
         <View style={styles.question}>
-            <Text style={styles.questionText}>Does React Native work with Android?</Text>
-            <TouchableOpacity onPress={()=>console.log('Pressed!')}>
-                <Text style={styles.answerText}>Answer</Text>
+            <Text style={styles.questionText}>{item.question}</Text>
+            <TouchableOpacity onPress={onPress}>
+                <Text style={styles.link}>Answer</Text>
             </TouchableOpacity>
         </View>
     )

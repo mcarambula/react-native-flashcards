@@ -5,6 +5,7 @@ import * as appColors from '../../utils/appColors';
 import Filled from '../TextButton/Filled';
 import { addQuestion } from '../../actions';
 import { createQuestion } from '../../utils/api';
+import generalStyles from '../General/General.style';
 import styles from './AddCard.style';
 
 class AddCard extends Component {
@@ -23,7 +24,7 @@ class AddCard extends Component {
     render() {
         const { deckId } = this.props.navigation.state.params;
         return (
-            <KeyboardAvoidingView behavior='padding' style={styles.container}>
+            <KeyboardAvoidingView behavior='padding' style={generalStyles.insideContainer}>
                     <Text style={styles.title}>{deckId}</Text>
                     <TextInput
                         style={styles.question}
@@ -41,7 +42,7 @@ class AddCard extends Component {
                         onChangeText={(answer) => this.setState({answer})}
                     />
                     <Filled
-                        style={{marginTop: 10, backgroundColor: appColors.aqua, borderColor: appColors.aqua}}
+                        style={{marginTop: 10}}
                         onPress={()=>this.submit(deckId)}>
                         Submit
                     </Filled>

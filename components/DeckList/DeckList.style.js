@@ -13,8 +13,7 @@ const styles = StyleSheet.create({
         elevation: 4
     },
     deckListContainer: {
-        backgroundColor: '#f2f2f2',
-        padding: 20
+        padding: 10
     }
 });
 

@@ -1,4 +1,6 @@
-export const aqua = '#01b7ad';
-export const blue = '#003a62';
-export const gray = '';
+export const aqua = '#76E2C7';
+export const purple = '#524364';
+export const white = '#837693';
 export const lightgray = '#a8a8a8';
+export const backgroudApp = '#837693';
+export const gray = '#7e7e7e';

@@ -11,6 +11,7 @@ import NewDeck from '../NewDeck/NewDeck';
 import Quiz from '../Quiz/Quiz';
 import { handleInitialData } from '../../actions';
 import * as nav from '../../utils/navigation';
+import * as appColors from '../../utils/appColors';
 
 const AndroidTab = createMaterialTopTabNavigator({
         Decks: {
@@ -28,9 +29,10 @@ const AndroidTab = createMaterialTopTabNavigator({
     },
     {
     tabBarOptions: {
-        activeTintColor: 'white',
+        activeTintColor: appColors.aqua,
+        inactiveTintColor: appColors.white,
         style: {
-            backgroundColor: '#003a62',
+            backgroundColor: appColors.purple,
             shadowColor: 'rgba(0, 0, 0, 0.24)',
             shadowOffset: {
                 width: 0,
@@ -40,7 +42,7 @@ const AndroidTab = createMaterialTopTabNavigator({
             shadowOpacity: 1
         },
         indicatorStyle: {
-            backgroundColor: '#01b7ad',
+            backgroundColor: appColors.aqua,
             height: 5,
         },
         labelStyle : {
@@ -56,7 +58,7 @@ const IOSTab = createBottomTabNavigator({
             navigationOptions: {
                 tabBarLabel: 'Decks',
                 tabBarIcon: ({ tintColor }) => (
-                    <Entypo name="layers" size={35} color={tintColor} />
+                    <Entypo name="layers" size={30} color={tintColor} />
                 ),
             },
         },
@@ -65,18 +67,18 @@ const IOSTab = createBottomTabNavigator({
             navigationOptions: {
                 tabBarLabel: 'New Deck',
                 tabBarIcon: ({ tintColor }) => (
-                  <Ionicons name="ios-add-outline" size={45} color={tintColor} />
+                  <Ionicons name="ios-add-outline" size={35} color={tintColor} />
                 ),
             },
         },
     },
     {
     tabBarOptions: {
-        inactiveTintColor: 'gray',
-        activeTintColor: '#01b7ad',
+        inactiveTintColor: appColors.white,
+        activeTintColor: appColors.aqua,
         style: {
-            height: 70,
-            backgroundColor: '#003a62',
+            height: 60,
+            backgroundColor: appColors.purple,
             shadowColor: 'rgba(0, 0, 0, 0.24)',
             shadowOffset: {
                 width: 0,
@@ -91,7 +93,8 @@ const IOSTab = createBottomTabNavigator({
     }
 });
 
-const Navigator = createStackNavigator({
+const Navigator = createStackNavigator(
+    {
         Home: {
             screen: (Platform.OS === 'ios') ? IOSTab : AndroidTab,
         },
@@ -118,10 +121,10 @@ const Navigator = createStackNavigator({
         navigationOptions: {
             header: null
         }
-});
+    }
+);
 
 class MainNavigator extends Component {
-
     componentDidMount() {
         /* Retreiving initial information for the application */
         this.props.handleInitialData().then(() => this.setState({ready: true}));
@@ -133,11 +136,7 @@ class MainNavigator extends Component {
         if (!this.state.ready) {
             return <AppLoading />;
         }
-
-        return (
-            //<NewDeck />
-            <Navigator style={{flex: 1, backgroundColor: 'red'}}/>
-        )
+        return <Navigator />
     }
 }
 

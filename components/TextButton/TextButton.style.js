@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
+import * as appColors from '../../utils/appColors';
 
 const styles = StyleSheet.create({
     btnFilled: {
-        borderColor: 'black',
-        backgroundColor: 'black',
+        borderColor: appColors.purple,
+        backgroundColor: appColors.purple,
         borderWidth: 2,
         borderRadius: 5
     },
@@ -16,13 +17,13 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
     btn: {
-        borderColor: 'black',
+        borderColor: appColors.purple,
         borderWidth: 2,
         borderRadius: 5
     },
     text: {
         textAlign: 'center',
-        color: 'black',
+        color: appColors.purple,
         padding: 55,
         paddingTop: 15,
         paddingBottom: 15,

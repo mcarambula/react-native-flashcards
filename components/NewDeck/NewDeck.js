@@ -23,7 +23,7 @@ class NewDeck extends Component {
     }
     render() {
         return (
-            <KeyboardAvoidingView behavior='padding' style={[generalStyles.container, styles.question]}>
+            <KeyboardAvoidingView behavior='padding' style={[generalStyles.container, generalStyles.insideContainer]}>
                 <Text style={styles.questionText}>What is the title of your new deck?</Text>
                 <TextInput
                     style={styles.txtInput}
@@ -32,7 +32,7 @@ class NewDeck extends Component {
                     value={this.state.text}
                 />
                 <Filled
-                    style={{marginTop: 10, backgroundColor: appColors.aqua, borderColor: appColors.aqua}}
+                    style={{marginTop: 10}}
                     onPress={this.submit}>
                     Submit
                 </Filled>
