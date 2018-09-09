@@ -14,7 +14,7 @@ export default function Quiz () {
         <View style={generalStyles.container}>
             { this.questionNumber() }
             <View style={styles.quizContainer}>
-                <Question />
+                <Question/>
                 <View style={generalStyles.btnContainer}>
                     <Filled style={{backgroundColor: 'green', borderWidth: 0}}> Correct </Filled>
                     <Filled style={{backgroundColor: 'red', borderWidth: 0}}> Incorrect </Filled>

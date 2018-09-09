@@ -16,9 +16,9 @@ const decks = (state = {}, action) => {
         case ADD_QUESTION :
             return {
                 ...state,
-                [action.deck.id] : {
-                    ...state[action.deck.id],
-                    questions: state[action.deck.id].questions.concat([action.question])
+                [action.deckId] : {
+                    ...state[action.deckId],
+                    questions: state[action.deckId].questions.concat([action.question])
                 }
             };
         default :

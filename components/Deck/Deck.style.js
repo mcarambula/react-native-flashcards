@@ -2,9 +2,19 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     deckContainer: {
-        padding: 40,
         flex: 1,
-        backgroundColor: 'yellow'
+        padding: 20,
+        backgroundColor: 'white',
+        borderRadius: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        elevation: 4,
+        margin: 40,
+        marginLeft: 20,
+        marginRight: 20,
+        justifyContent: 'center'
     },
     btnContainer: {
         justifyContent: 'flex-end',

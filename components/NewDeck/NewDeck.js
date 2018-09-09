@@ -7,6 +7,7 @@ import { createDeck } from '../../utils/api';
 import styles from './NewDeck.style';
 import * as appColors from '../../utils/appColors';
 import generalStyles from '../General/General.style';
+import * as nav from '../../utils/navigation';
 
 class NewDeck extends React.Component {
     state = {
@@ -17,7 +18,7 @@ class NewDeck extends React.Component {
         const { addDeck, navigation } = this.props;
         createDeck(title).then((deck) => {
             addDeck(deck);
-            navigation.navigate('Deck', { deckId: title});
+            navigation.navigate(nav.DECK_VIEW_KEY, { deckId: title});
         });
     }
     render() {

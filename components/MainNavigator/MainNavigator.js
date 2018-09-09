@@ -8,7 +8,9 @@ import Deck from '../Deck/Deck';
 import AddCard from '../AddCard/AddCard';
 import DeckList from '../DeckList/DeckList';
 import NewDeck from '../NewDeck/NewDeck';
+import Quiz from '../Quiz/Quiz';
 import { handleInitialData } from '../../actions';
+import * as nav from '../../utils/navigation';
 
 const AndroidTab = createMaterialTopTabNavigator({
         Decks: {
@@ -107,6 +109,9 @@ const Navigator = createStackNavigator({
         },
         AddCard: {
             screen: AddCard
+        },
+        Quiz: {
+            screen: Quiz
         }
     },
     {
