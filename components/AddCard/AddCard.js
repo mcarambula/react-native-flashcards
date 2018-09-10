@@ -1,14 +1,57 @@
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View } from 'react-native';
+import * as appColors from '../../utils/appColors';
+import Filled from '../TextButton/Filled';
+import { addQuestion } from '../../actions';
+import { createQuestion } from '../../utils/api';
+import generalStyles from '../General/General.style';
+import styles from './AddCard.style';
 
-export default function Question () {
-    return (
-        <View>
-            <Text>Question</Text>
-        </View>
-    )
+class AddCard extends Component {
+    state = {
+        question: '',
+        answer:'',
+    }
+    submit = (deckId) => {
+        const { question, answer } = this.state;
+        const { navigation } = this.props;
+        createQuestion({question, answer, deckId}).then(() => {
+            this.props.addQuestion(deckId, {question, answer});
+            navigation.goBack();
+        });
+    }
+    render() {
+        const { deckId } = this.props.navigation.state.params;
+        return (
+            <KeyboardAvoidingView behavior='padding' style={generalStyles.insideContainer}>
+                    <Text style={styles.title}>{deckId}</Text>
+                    <TextInput
+                        style={styles.question}
+                        editable={true}
+                        maxLength={100}
+                        placeholder="Input your question here"
+                        onChangeText={(question) => this.setState({question})}
+                    />
+                    <TextInput
+                        style={styles.answer}
+                        editable={true}
+                        maxLength={200}
+                        multiline={true}
+                        placeholder="Input your answer here"
+                        onChangeText={(answer) => this.setState({answer})}
+                    />
+                    <Filled
+                        style={{marginTop: 10}}
+                        onPress={()=>this.submit(deckId)}>
+                        Submit
+                    </Filled>
+                    <View style={{ height: 60 }} />
+                </KeyboardAvoidingView>
+        )
+    }
 }
 
-const styles = StyleSheet.create({
+const mapDispatchToProps = { addQuestion };
 
-})
+export default connect(null, mapDispatchToProps)(AddCard);

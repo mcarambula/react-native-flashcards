@@ -31,6 +31,13 @@ export const createDeck = (title) => {
             AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify(newDeck));
             return newDeck;
         }
-        return decks[title];
+        //return decks[title];
+    })
+}
+
+export const createQuestion = ({question, answer, deckId}) => {
+    return retrieveDecks().then((decks) => {
+        decks[deckId].questions.push({question, answer})
+        AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(decks));
     })
 }

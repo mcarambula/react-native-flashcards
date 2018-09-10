@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import * as appColors from '../../utils/appColors';
 
 const styles = StyleSheet.create({
     card: {
@@ -7,11 +8,24 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-        fontSize: 35
+        fontSize: 30,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: appColors.primary
     },
+    /*howManyContainer: {
+        backgroundColor: appColors.secondary,
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginTop: 15,
+        padding: 5,
+        borderBottomRightRadius: 5,
+        borderBottomLeftRadius: 5
+    },*/
     howMany: {
-        fontSize: 18,
-        color: 'gray',
+        fontSize: 16,
+        color: appColors.gray,
         margin: 5
     }
 });
