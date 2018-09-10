@@ -3,8 +3,8 @@ import * as appColors from '../../utils/appColors';
 
 const styles = StyleSheet.create({
     btnFilled: {
-        borderColor: appColors.purple,
-        backgroundColor: appColors.purple,
+        borderColor: appColors.primary,
+        backgroundColor: appColors.primary,
         borderWidth: 2,
         borderRadius: 5
     },
@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
     btn: {
-        borderColor: appColors.purple,
+        borderColor: appColors.primary,
         borderWidth: 2,
         borderRadius: 5
     },
     text: {
         textAlign: 'center',
-        color: appColors.purple,
+        color: appColors.primary,
         padding: 55,
         paddingTop: 15,
         paddingBottom: 15,

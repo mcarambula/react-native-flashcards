@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'center',
         fontWeight: 'bold',
-        color: appColors.purple
+        color: appColors.primary
     },
     howMany: {
         fontSize: 16,

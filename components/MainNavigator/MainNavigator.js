@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Platform } from 'react-native';
+import { Text, View, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { Ionicons, Entypo } from '@expo/vector-icons';
 import { AppLoading } from 'expo';
@@ -29,10 +29,10 @@ const AndroidTab = createMaterialTopTabNavigator({
     },
     {
     tabBarOptions: {
-        activeTintColor: appColors.aqua,
+        activeTintColor: appColors.seconday,
         inactiveTintColor: appColors.white,
         style: {
-            backgroundColor: appColors.purple,
+            backgroundColor: appColors.primary,
             shadowColor: 'rgba(0, 0, 0, 0.24)',
             shadowOffset: {
                 width: 0,
@@ -42,7 +42,7 @@ const AndroidTab = createMaterialTopTabNavigator({
             shadowOpacity: 1
         },
         indicatorStyle: {
-            backgroundColor: appColors.aqua,
+            backgroundColor: appColors.secondary,
             height: 5,
         },
         labelStyle : {
@@ -51,14 +51,13 @@ const AndroidTab = createMaterialTopTabNavigator({
     }
 })
 
-
 const IOSTab = createBottomTabNavigator({
         Decks: {
             screen: DeckList,
             navigationOptions: {
                 tabBarLabel: 'Decks',
                 tabBarIcon: ({ tintColor }) => (
-                    <Entypo name="layers" size={30} color={tintColor} />
+                    <Entypo name='layers' size={30} color={tintColor} />
                 ),
             },
         },
@@ -67,7 +66,7 @@ const IOSTab = createBottomTabNavigator({
             navigationOptions: {
                 tabBarLabel: 'New Deck',
                 tabBarIcon: ({ tintColor }) => (
-                  <Ionicons name="ios-add-outline" size={35} color={tintColor} />
+                  <Ionicons name='ios-add-outline' size={35} color={tintColor} />
                 ),
             },
         },
@@ -75,10 +74,10 @@ const IOSTab = createBottomTabNavigator({
     {
     tabBarOptions: {
         inactiveTintColor: appColors.white,
-        activeTintColor: appColors.aqua,
+        activeTintColor: appColors.secondary,
         style: {
             height: 60,
-            backgroundColor: appColors.purple,
+            backgroundColor: appColors.primary,
             shadowColor: 'rgba(0, 0, 0, 0.24)',
             shadowOffset: {
                 width: 0,
@@ -100,37 +99,41 @@ const Navigator = createStackNavigator(
         },
         Deck: {
             screen: Deck,
-            title: "Deck",
+            title: 'Deck',
             navigationOptions:{
                 headerTintColor: 'white',
                 headerStyle:{
-                    backgroundColor: 'black'
+                    backgroundColor: appColors.headerBackground
                 },
                 headerBackTitle: null,
-                title: "Deck Details"
+                title: 'Deck Details'
             }
         },
         AddCard: {
             screen: AddCard
         },
         Quiz: {
-            screen: Quiz
-        }
-    },
-    {
-        navigationOptions: {
-            header: null
+            screen: Quiz,
+            title: 'Quiz',
+            navigationOptions:{
+                headerTintColor: 'white',
+                headerStyle:{
+                    backgroundColor: appColors.headerBackground
+                },
+                headerBackTitle: null,
+                title: 'Quiz'
+            }
         }
     }
 );
 
 class MainNavigator extends Component {
+    state = {
+        ready: false
+    }
     componentDidMount() {
         /* Retreiving initial information for the application */
         this.props.handleInitialData().then(() => this.setState({ready: true}));
-    }
-    state = {
-        ready: false
     }
     render() {
         if (!this.state.ready) {

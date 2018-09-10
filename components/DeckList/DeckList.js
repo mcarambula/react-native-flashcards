@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, FlatList, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import DeckCard from '../Deck/DeckCard';
 import styles from './DeckList.style';
 import * as nav from '../../utils/navigation';

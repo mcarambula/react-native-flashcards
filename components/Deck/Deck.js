@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 import Outlined from '../TextButton/Outlined';
 import Filled from '../TextButton/Filled';
 import DeckCard from './DeckCard';
@@ -23,7 +23,9 @@ class Deck extends Component {
                 <DeckCard item={deck} />
                 <View style={generalStyles.btnContainer}>
                     <Outlined onPress={() => this.showCardView(deck)}>Add Card</Outlined>
-                    <Filled onPress={() => this.showQuizView(deck)}  style={{marginTop: 10}}>Start Quiz</Filled>
+                    { deck.questions.length > 0 &&
+                        <Filled onPress={() => this.showQuizView(deck)}  style={{marginTop: 10}}>Start Quiz</Filled>
+                    }
                 </View>
             </View>
         )
