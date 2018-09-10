@@ -9,6 +9,7 @@ import styles from './Quiz.style';
 import generalStyles from '../General/General.style';
 import * as nav from '../../utils/navigation';
 import * as appColors from '../../utils/appColors';
+import { setLocalNotification, clearLocalNotification } from '../../utils/helpers';
 
 class Quiz extends Component {
     state = {
@@ -25,7 +26,14 @@ class Quiz extends Component {
                 score: (correct) ? prevState.score + 1 : prevState.score
             }));
         }
-        return this.setState(prevState => ({end: true, score: (correct) ? prevState.score + 1 : prevState.score}));
+        this.setState(prevState => (
+            {
+                end: true,
+                score: (correct) ? prevState.score + 1 : prevState.score,
+            }
+        ));
+        clearLocalNotification()
+            .then(setLocalNotification);
     }
     questionNumber = (currentQuestion, howMany) => {
         if (howMany === 1) {

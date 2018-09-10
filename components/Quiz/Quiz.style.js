@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     card: {
         flex: 1,
-        backgroundColor: appColors.lightgray,
+        backgroundColor: appColors.lightGray,
         borderRadius: 5,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },

@@ -9,10 +9,14 @@ import MainNavigator from './components/MainNavigator/MainNavigator';
 import reducer from './reducers';
 import middleware from './middleware';
 import * as appColors from './utils/appColors';
+import { setLocalNotification } from './utils/helpers';
 
 const store = createStore(reducer, middleware);
 
 export default class App extends Component {
+    componentDidMount(){
+        setLocalNotification();
+    }
     render() {
         return (
           <Provider store={store}>

@@ -28,28 +28,28 @@ const AndroidTab = createMaterialTopTabNavigator({
         },
     },
     {
-    tabBarOptions: {
-        activeTintColor: appColors.seconday,
-        inactiveTintColor: appColors.white,
-        style: {
-            backgroundColor: appColors.primary,
-            shadowColor: 'rgba(0, 0, 0, 0.24)',
-            shadowOffset: {
-                width: 0,
-                height: 3
+        tabBarOptions: {
+            activeTintColor: appColors.seconday,
+            style: {
+                backgroundColor: appColors.primary,
+                shadowColor: 'rgba(0, 0, 0, 0.24)',
+                shadowOffset: {
+                    width: 0,
+                    height: 3
+                },
+                shadowRadius: 6,
+                shadowOpacity: 1
             },
-            shadowRadius: 6,
-            shadowOpacity: 1
-        },
-        indicatorStyle: {
-            backgroundColor: appColors.secondary,
-            height: 5,
-        },
-        labelStyle : {
-            fontSize: 18
+            indicatorStyle: {
+                backgroundColor: appColors.secondary,
+                height: 5,
+            },
+            labelStyle : {
+                fontSize: 18
+            }
         }
     }
-})
+);
 
 const IOSTab = createBottomTabNavigator({
         Decks: {
@@ -73,11 +73,11 @@ const IOSTab = createBottomTabNavigator({
     },
     {
     tabBarOptions: {
-        inactiveTintColor: appColors.white,
-        activeTintColor: appColors.secondary,
+        inactiveTintColor: appColors.gray,
+        activeTintColor: appColors.primary,
         style: {
             height: 60,
-            backgroundColor: appColors.primary,
+            backgroundColor: 'white',
             shadowColor: 'rgba(0, 0, 0, 0.24)',
             shadowOffset: {
                 width: 0,
@@ -96,6 +96,9 @@ const Navigator = createStackNavigator(
     {
         Home: {
             screen: (Platform.OS === 'ios') ? IOSTab : AndroidTab,
+            navigationOptions: {
+                header: null
+            },
         },
         Deck: {
             screen: Deck,

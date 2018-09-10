@@ -8,7 +8,9 @@ export default function DeckCard ({ item }) {
     return (
         <View style={[styles.card, cardStyle]}>
             <Text style={styles.title}>{title}</Text>
-            <Text style={styles.howMany}>{howMany} cards </Text>
+            <View style={styles.howManyContainer}>
+                <Text style={styles.howMany}>{howMany} cards </Text>
+            </View>
         </View>
     )
 }

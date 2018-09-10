@@ -24,9 +24,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 2,
         elevation: 4,
-        margin: 40,
-        marginLeft: 20,
-        marginRight: 20,
+        margin: 10,
         justifyContent: 'center'
     }
 });
