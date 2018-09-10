@@ -113,7 +113,15 @@ const Navigator = createStackNavigator(
             }
         },
         AddCard: {
-            screen: AddCard
+            screen: AddCard,
+            navigationOptions:{
+                headerTintColor: 'white',
+                headerStyle:{
+                    backgroundColor: appColors.headerBackground
+                },
+                headerBackTitle: null,
+                title: 'Add a new card'
+            }
         },
         Quiz: {
             screen: Quiz,
