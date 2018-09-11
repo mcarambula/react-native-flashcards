@@ -2,29 +2,31 @@ import { StyleSheet } from 'react-native';
 import * as appColors from '../../utils/appColors';
 
 const styles = StyleSheet.create({
+    question: {
+        flex: 4,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5
+    },
     questionNumber: {
         zIndex: 2,
         fontSize: 16
-    },
-    question: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
     },
     questionText: {
         fontSize: 35,
         textAlign: 'center'
     },
     link: {
-        color: appColors.gray,
+        color: appColors.secondary,
         fontSize: 14,
-        marginTop: 20,
-        marginBottom: 40,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     answerText: {
         fontSize: 20,
         textAlign: 'center',
+    },
+    cardContainer: {
+        flex: 3
     },
     card: {
         flex: 1,
@@ -36,15 +38,18 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 4,
         justifyContent: 'center',
-        padding: 10,
-        marginTop: 10
+        padding: 20,
+        margin: 10,
+    },
+    backCard: {
+        backgroundColor: appColors.backCard
     },
     bullet: {
-        width: 14,
-        height: 14,
+        width: 10,
+        height: 10,
         margin: 4,
         backgroundColor: appColors.gray,
-        borderRadius: 7
+        borderRadius: 5
     }
 });
 

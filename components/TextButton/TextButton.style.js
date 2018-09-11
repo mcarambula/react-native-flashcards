@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 5
     },
+    btnDisabled: {
+        opacity: 0.5
+    },
     textFilled: {
         textAlign: 'center',
         color: 'white',

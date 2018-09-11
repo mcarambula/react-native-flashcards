@@ -7,18 +7,6 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: 'center'
     },
-    button: {
-        padding: 10,
-        height: 60,
-        justifyContent: 'center',
-        borderRadius: 5,
-        backgroundColor: 'red'
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 25,
-        textAlign: 'center'
-    },
     question: {
         marginTop: 10,
         marginBottom: 10,

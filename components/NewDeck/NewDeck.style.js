@@ -6,14 +6,9 @@ const styles = StyleSheet.create({
         fontSize: 38,
         textAlign: 'center',
     },
-    /*topCard: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderTopLeftRadius: 5,
-        borderTopRightRadius: 5,
-        backgroundColor: appColors.secondary
-    },*/
+    error: {
+        color: 'red'
+    },
     txtInput: {
         height: 50,
         borderColor: appColors.gray,

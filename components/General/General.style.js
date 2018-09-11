@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
         padding: 20
     },
     btnContainer: {
-        padding: 30
+        padding: 10,
+        paddingTop: 30
     },
     flexEnd: {
         justifyContent: 'flex-end'

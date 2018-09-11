@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 import * as appColors from '../../utils/appColors';
 import Filled from '../TextButton/Filled';
 import { addQuestion } from '../../actions';
@@ -13,6 +13,10 @@ class AddCard extends Component {
         question: '',
         answer:'',
     }
+    /*
+        This functions submit the new question created by the questionNumber
+        and adds it to the store and the local storage
+    */
     submit = (deckId) => {
         const { question, answer } = this.state;
         const { navigation } = this.props;
@@ -23,8 +27,11 @@ class AddCard extends Component {
     }
     render() {
         const { deckId } = this.props.navigation.state.params;
+        const { question, answer } = this.state;
         return (
-            <KeyboardAvoidingView behavior='padding' style={generalStyles.insideContainer}>
+            <KeyboardAvoidingView
+                behavior='padding'
+                style={generalStyles.insideContainer}>
                     <Text style={styles.title}>{deckId}</Text>
                     <TextInput
                         style={styles.question}
@@ -43,7 +50,8 @@ class AddCard extends Component {
                     />
                     <Filled
                         style={{marginTop: 10}}
-                        onPress={()=>this.submit(deckId)}>
+                        onPress={()=>this.submit(deckId)}
+                        disabled={question === '' || answer === ''}>
                         Submit
                     </Filled>
                     <View style={{ height: 60 }} />
