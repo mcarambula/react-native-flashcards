@@ -6,6 +6,8 @@ import { Text, View, TouchableOpacity, Animated } from 'react-native';
 import Filled from '../TextButton/Filled';
 import Outlined from '../TextButton/Outlined';
 import Results from './Results';
+import Question from './Question';
+import Answer from './Answer';
 import styles from './Quiz.style';
 import generalStyles from '../General/General.style';
 import * as nav from '../../utils/navigation';
@@ -21,12 +23,14 @@ class Quiz extends Component {
     }
     componentDidMount() {
         const { opacity } = this.state;
+        this.isFlipped = false;
         Animated.timing(opacity, { duration: 1000, toValue: 1}).start();
     }
     componentDidUpdate(prevProps, prevState) {
         const { opacity, currentQuestion } = this.state;
         if (prevState.currentQuestion !== currentQuestion) {
-            Animated.timing(opacity, { duration: 1000, toValue: 1}).start();
+            const duration = (this.isFlipped) ? 4000 : 1000;
+            Animated.timing(opacity, { duration, toValue: 1}).start();
         }
     }
     next = ({currentQuestion, questions, correct = false}) => {
@@ -108,35 +112,21 @@ class Quiz extends Component {
         const item = deck.questions[currentQuestion];
         return (
             <View style={{flex:1}}>
-                <CardFlip
-                    style={styles.cardContainer}
-                    ref={(card) => this.card = card} >
-                    <View style={styles.card} >
-                        <View style={styles.question}>
-                            <Text style={styles.questionText}>{item.question}</Text>
-                        </View>
-                        <TouchableOpacity onPress={() => this.flip(true)}
-                            style={{flex: 1, justifyContent: 'center'}}>
-                            <Text style={styles.link}>Show Answer</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={[styles.card, styles.backCard]} >
-                        <View style={styles.question}>
-                            <Text style={styles.answerText}>{item.answer}</Text>
-                        </View>
-                        <TouchableOpacity onPress={() => this.flip(false)}
-                            style={{flex: 1, justifyContent: 'center'}}>
-                            <Text style={styles.link}>Show Question</Text>
-                        </TouchableOpacity>
-                    </View>
-                 </CardFlip>
+                <Animated.View style={{ flex: 3, opacity }}>
+                    <CardFlip
+                        style={styles.cardContainer}
+                        duration={300}
+                        ref={(card) => this.card = card} >
+                            <Question item={item} onPress={() => this.flip(true)} />
+                            <Answer item={item} onPress={() => this.flip(false)}  />
+                    </CardFlip>
+                </Animated.View>
                 <View style={[generalStyles.btnContainer, {flex: 1}]}>
                     <Outlined
                         onPress={() => this.next({currentQuestion, questions: deck.questions, correct: true})}> Correct </Outlined>
                     <Filled
                         onPress={() => this.next({currentQuestion, questions: deck.questions})}
-                        style={{marginTop: 10}}
-                        > Incorrect </Filled>
+                        style={{marginTop: 10}}> Incorrect </Filled>
                 </View>
             </View>
         )
@@ -147,7 +137,7 @@ class Quiz extends Component {
         const howMany = deck.questions.length;
         const item = deck.questions[currentQuestion];
         return (
-            <View style={{flex: 1, backgroundColor: 'white', padding: 10}}>
+            <View style={{flex: 1, backgroundColor: 'white', padding: 20}}>
                 { !end && this.questionNumber(currentQuestion, howMany) }
                 { !end ?
                     this.renderQuestions()

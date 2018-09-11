@@ -13,16 +13,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: appColors.primary
     },
-    /*howManyContainer: {
-        backgroundColor: appColors.secondary,
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        marginTop: 15,
-        padding: 5,
-        borderBottomRightRadius: 5,
-        borderBottomLeftRadius: 5
-    },*/
     howMany: {
         fontSize: 16,
         color: appColors.gray,

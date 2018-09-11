@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import * as appColors from '../../utils/appColors';
 
 const styles = StyleSheet.create({
     app: {
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     insideContainer: {
         flex: 1,
         padding: 20,
-        backgroundColor: 'white',
+        backgroundColor: appColors.white,
         borderRadius: 5,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
@@ -27,6 +28,14 @@ const styles = StyleSheet.create({
         elevation: 4,
         margin: 10,
         justifyContent: 'center'
+    },
+    txtInput: {
+        height: 50,
+        borderColor: appColors.mediumGray,
+        borderRadius: 5,
+        padding: 10,
+        borderWidth: 1,
+        marginTop: 40
     }
 });
 

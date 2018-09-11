@@ -7,16 +7,6 @@ const styles = StyleSheet.create({
         fontSize: 24,
         textAlign: 'center'
     },
-    question: {
-        marginTop: 10,
-        marginBottom: 10,
-        padding: 10,
-        paddingTop: 5,
-        paddingBottom: 5,
-        borderWidth: 1,
-        borderColor: 'gray',
-        borderRadius: 5
-    },
     answer: {
         marginTop: 10,
         marginBottom: 10,

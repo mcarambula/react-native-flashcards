@@ -34,7 +34,7 @@ class AddCard extends Component {
                 style={generalStyles.insideContainer}>
                     <Text style={styles.title}>{deckId}</Text>
                     <TextInput
-                        style={styles.question}
+                        style={generalStyles.txtInput}
                         editable={true}
                         maxLength={100}
                         placeholder="Input your question here"

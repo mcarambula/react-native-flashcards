@@ -30,10 +30,12 @@ class NewDeck extends Component {
     render() {
         const { title, error } = this.state;
         return (
-            <KeyboardAvoidingView behavior='padding' style={[generalStyles.container, generalStyles.insideContainer]}>
+            <KeyboardAvoidingView
+                behavior='padding'
+                style={[generalStyles.container, generalStyles.insideContainer]}>
                 <Text style={styles.questionText}>What is the title of your new deck?</Text>
                 <TextInput
-                    style={styles.txtInput}
+                    style={generalStyles.txtInput}
                     onChangeText={(title) => this.setState({title})}
                     placeholder="Deck Title"
                     value={this.state.text}
@@ -42,8 +44,7 @@ class NewDeck extends Component {
                 <Filled
                     style={{marginTop: 10}}
                     onPress={this.submit}
-                    disabled={title === ''}
-                    >
+                    disabled={title === ''} >
                     Submit
                 </Filled>
                 <View style={{ height: 60 }} />
