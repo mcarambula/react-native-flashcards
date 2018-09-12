@@ -64,3 +64,18 @@ $ yarn start
 
 ### Step 4:
 Following the instructions to run the app on the corresponding simulator.
+
+
+## Tested on
+
+This app has been tested on iOS 11 and also on Android 6.
+
+## Libraries Used
+
+The project uses the following dependencies:
+
+* [react-native](https://facebook.github.io/react-native/)
+* [expo](https://expo.io/)
+* [react-navigation](https://reactnavigation.org/)
+* [react-redux](https://redux.js.org/basics/usagewithreact)
+* [react-native-card-flip](https://www.npmjs.com/package/react-native-card-flip)
