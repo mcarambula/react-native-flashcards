@@ -17,7 +17,7 @@ On this view, the user will see the title of the deck and the number of cards th
 
 #### Quiz
 
-On this view the user would be able to go through all the cards in the deck selected. The card question will be displayed with an option to view the answer (flipping the card). Also a correct button and incorrect button will be display allowing the user to register if he was able or not to answer the question correctly.
+On this view the user would be able to go through all the cards in the deck selected. The card question will be displayed with an option to view the answer (flipping the card). It will also show a correct button and an incorrect button that will allow the user to register if he was able to answer the question correctly or not.
 
 After the user completes the quiz, the score will be displayed.
 
@@ -40,12 +40,12 @@ Check out the project's "master" branch and install the latest version of [Node]
 After successfully finish the installation, cd into your project directory and run the command "npm install" if you installed Node or "yarn start" if you chosen Yarn. This will take a while for your first install as it will download all the project dependencies.
 
 ```
-cd /game-would-you-rather
+cd /Flashcards
 $ npm install
 ```
 
 ```
-cd /game-would-you-rather
+cd /Flashcards
 $ yarn install
 ```
 
@@ -61,3 +61,6 @@ or
 ```
 $ yarn start
 ```
+
+### Step 4:
+Following the instructions to run the app on the corresponding simulator.
