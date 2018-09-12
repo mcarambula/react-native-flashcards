@@ -1,6 +1,6 @@
 # Flashcards Project
 
-This repository contains my implementation of the mobile application "Flashcard" (Android and iOS) (React Native assessment project for the [Udacity React Nanodegree Program](https://www.udacity.com/course/react-nanodegree--nd019)).
+This repository contains my implementation of the mobile application *Flashcard* (Android and iOS) (React Native assessment project for the [Udacity React Nanodegree Program](https://www.udacity.com/course/react-nanodegree--nd019)).
 
 This app allows users to study collections of flashcards. The app will allow users to create different categories of flashcards called "decks", add flashcards to those decks and then take quizzes on those decks.
 
