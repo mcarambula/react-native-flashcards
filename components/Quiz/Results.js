@@ -1,45 +1,86 @@
-import React from 'react';
-import { Text, View, TouchableOpacity, Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React, { Component } from 'react';
+import { Text, View, TouchableOpacity, Animated } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 import Outlined from '../TextButton/Outlined';
 import Filled from '../TextButton/Filled';
 import styles from './Quiz.style';
+import generalStyles from '../General/General.style';
+import * as appColors from '../../utils/appColors';
 
-export default function Results({score, howMany,  goHome, resetQuiz}) {
-    const sc = (score / howMany *  100 >= 90) ? 2 : (score / howMany *  100 >= 50) ? 1 : 0 ;
-    const comment = (sc === 2)
-                        ? "Woooh! Excellent job! 🙌🏻"
-                        : ((sc === 1 )
-                            ? "Keep it up! You are doing a good job! 😊"
-                            : "That wasn't so good. Keep trying! 💪🏻");
+let ar = ['star', 'star-o', 'star-o'];
 
-    const getIcons = (sc) => {
-        let ar = [];
-        if (Platform.OS === 'ios') {
-            if (sc === 2) {
-                ar = ['ios-star', 'ios-star', 'ios-star'];
-            }
-            else if (sc === 1) {
-                ar = ['ios-star', 'ios-star', 'ios-star-outline'];
-            }
-            else if (sc === 0) {
-                ar = ['ios-star', 'ios-star-outline', 'ios-star-outline'];
-            }
-        }
-
-        return ar.map((icon, i) => (
-            <Ionicons key={i} name={icon} size={30} style={{margin: 5}} />
-        ));
+class Results extends Component  {
+    constructor () {
+        super();
+        this.animatedValue = [];
+        /* Creating animation for each star */
+        ar.forEach((value, i) => {
+            this.animatedValue[i] = new Animated.Value(0)
+        });
     }
-    return (
-        <View style={{flex:1, padding: 20}}>
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={styles.answerText}>Score {score} / {howMany}</Text>
-                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 30, marginTop: 30}}>{ getIcons(sc) }</View>
-                <Text style={styles.answerText}>{comment}</Text>
+    componentDidMount () {
+        this.animate();
+    }
+    animate () {
+        const animations = ar.map((item, i) => {
+            return Animated.timing(
+                this.animatedValue[i],
+                {
+                    toValue: 1,
+                    duration: 200
+                }
+            )
+        })
+        Animated.sequence(animations).start();
+    }
+    /*
+        This function allows to show
+        the appropriate stars given the score
+    */
+    getIcons = (sc) => {
+        if (sc === 2) {
+            ar = ['star', 'star', 'star'];
+        }
+        else if (sc === 1) {
+            ar = ['star', 'star', 'star-o'];
+        }
+        return (ar.map((icon, i) => (
+                <Animated.View key={i} style={{opacity: this.animatedValue[i]}}>
+                    <FontAwesome name={icon} size={40} style={{margin: 5}} color={appColors.secondary} />
+                </Animated.View>
+                )))
+    }
+    renderScore = (score, howMany) => {
+        return (
+            <View>
+                <Text style={styles.score}>Score {score} / {howMany}</Text>
             </View>
-            <Outlined onPress={resetQuiz}>Reset</Outlined>
-            <Filled onPress={goHome} style={{marginTop: 10}}>Go to home</Filled>
-        </View>
-    )
+        )
+    }
+    render() {
+        const {score, howMany,  goHome, resetQuiz} = this.props;
+        const sc = (score / howMany *  100 >= 90) ? 2 : (score / howMany *  100 >= 50) ? 1 : 0 ;
+        const comment = (sc === 2)
+                            ? "Woooh! Excellent job!"
+                            : ((sc === 1 )
+                                ? "Keep it up! You are doing a good job!"
+                                : "That wasn't so good. Keep trying!");
+        return (
+            <View style={{flex:1, padding: 20}}>
+                <View style={[generalStyles.flex, generalStyles.centered]}>
+                    {this.renderScore(score, howMany)}
+                    <View
+                        style={styles.icons}>
+                        {this.getIcons(sc)}
+                    </View>
+                    <Text style={styles.answerText}>{comment}</Text>
+                </View>
+                <Outlined onPress={resetQuiz}>Reset</Outlined>
+                <Filled onPress={goHome} style={{marginTop: 10}}>Go to home</Filled>
+            </View>
+        )
+    }
+
 }
+
+export default Results;

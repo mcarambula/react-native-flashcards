@@ -3,6 +3,11 @@ import { Text, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-na
 import styles from './TextButton.style';
 
 export default function Filled ({ children, onPress, disabled = false, style = {} }) {
+    /*
+        Checking if the button needs to be disabled (empty for).
+        In case it should be disabled, return a TouchableWithoutFeedback component.
+        In case it shouldn't return a TouchableOpacity component.
+    */
     if (!disabled) {
         return (
             <TouchableOpacity

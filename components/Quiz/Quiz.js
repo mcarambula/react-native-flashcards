@@ -21,11 +21,19 @@ class Quiz extends Component {
         end: false,
         opacity: new Animated.Value(0)
     }
+    /* Once the component is mounted start initial animation */
     componentDidMount() {
         const { opacity } = this.state;
         this.isFlipped = false;
         Animated.timing(opacity, { duration: 1000, toValue: 1}).start();
     }
+    /*
+        This functions allows to:
+        - Change the opacity animation duration based
+        in if the card is flipped or not (to give more time to flip it over).
+        - Start the opacity animation again
+
+    */
     componentDidUpdate(prevProps, prevState) {
         const { opacity, currentQuestion } = this.state;
         if (prevState.currentQuestion !== currentQuestion) {
@@ -33,6 +41,10 @@ class Quiz extends Component {
             Animated.timing(opacity, { duration, toValue: 1}).start();
         }
     }
+    /*
+        This functions goes to the next question (if it exists )
+        If it doesn't then set the result view with the score
+    */
     next = ({currentQuestion, questions, correct = false}) => {
         const { opacity } = this.state;
         // if there are more questions to answer.
@@ -60,6 +72,7 @@ class Quiz extends Component {
         clearLocalNotification()
             .then(setLocalNotification);
     }
+    /* This functions allows to create as many bullets as questions has the deck */
     questionNumber = (currentQuestion, howMany) => {
         if (howMany === 1) {
             return null;
@@ -87,6 +100,7 @@ class Quiz extends Component {
             </View>
         );
     }
+    /* This reset the quiz */
     resetQuiz = () => {
         this.setState({
             currentQuestion: 0,
@@ -94,6 +108,7 @@ class Quiz extends Component {
             end: false
         });
     }
+    /* This function allows to go to home reseting the stack */
     goHome = () => {
         const resetAction = StackActions.reset({
             index: 0,
@@ -101,17 +116,25 @@ class Quiz extends Component {
         });
         this.props.navigation.dispatch(resetAction);
     }
+    /*
+        This functions allows to keep track if the previous card was flipped,
+        so when the user goes to the next is flipped over again.
+    */
     flip = (back) => {
         this.isFlipped = back;
         this.card.flip();
     }
+    /*
+        This functions allows to render the question card
+        and the buttons to answer it
+    */
     renderQuestions = () => {
         const { currentQuestion, end, opacity } = this.state;
         const { deck } = this.props;
         const howMany = deck.questions.length;
         const item = deck.questions[currentQuestion];
         return (
-            <View style={{flex:1}}>
+            <View style={generalStyles.flex}>
                 <Animated.View style={{ flex: 3, opacity }}>
                     <CardFlip
                         style={styles.cardContainer}
@@ -121,7 +144,7 @@ class Quiz extends Component {
                             <Answer item={item} onPress={() => this.flip(false)}  />
                     </CardFlip>
                 </Animated.View>
-                <View style={[generalStyles.btnContainer, {flex: 1}]}>
+                <View style={[generalStyles.btnContainer, generalStyles.flex]}>
                     <Outlined
                         onPress={() => this.next({currentQuestion, questions: deck.questions, correct: true})}> Correct </Outlined>
                     <Filled
@@ -137,7 +160,7 @@ class Quiz extends Component {
         const howMany = deck.questions.length;
         const item = deck.questions[currentQuestion];
         return (
-            <View style={{flex: 1, backgroundColor: 'white', padding: 20}}>
+            <View style={styles.quiz}>
                 { !end && this.questionNumber(currentQuestion, howMany) }
                 { !end ?
                     this.renderQuestions()
@@ -159,7 +182,5 @@ function mapStateToProps({ decks }, { navigation }) {
         deck: decks[deckId]
     }
 }
-
-
 
 export default connect(mapStateToProps)(Quiz);

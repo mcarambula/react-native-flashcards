@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import styles from './DeckCard.style';
 
+/* This component renders the deck card (used on the listing and on the detail )*/
 export default function DeckCard ({ item }) {
     const { title, cardStyle } = item;
     const howMany = (item.questions) ? item.questions.length : 0;

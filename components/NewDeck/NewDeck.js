@@ -14,6 +14,10 @@ class NewDeck extends Component {
         title: '',
         error: false
     }
+    /*
+        After a user submits the form, the deck object is createDeck
+        and add it to the store and the localStorage
+    */
     submit = () => {
         const { title } = this.state;
         const { addDeck, navigation } = this.props;
@@ -22,6 +26,10 @@ class NewDeck extends Component {
             navigation.navigate(nav.DECK_VIEW_KEY, { deckId: title});
         }).catch((error)=> this.setState({error}));
     }
+    /*
+        This function allows to show an error message in case the user
+        tries to add a deck with a title that already exists
+    */
     showError() {
         return (
             <Text style={styles.error}>Ups, that deck already exists!</Text>

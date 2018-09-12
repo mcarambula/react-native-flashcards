@@ -6,6 +6,7 @@ import styles from './DeckList.style';
 import * as nav from '../../utils/navigation';
 
 class DeckList extends Component  {
+    /* This functions allows to navigate to the specific card view */
     onPressItem = (item) => {
         this.props.navigation.navigate(nav.DECK_VIEW_KEY, { deckId: item.title });
     }
@@ -17,7 +18,9 @@ class DeckList extends Component  {
                 keyExtractor={ item => item.title }
                 renderItem = {({item}) => {
                     return (
-                        <TouchableOpacity style={styles.card} onPress={() => this.onPressItem(item)}>
+                        <TouchableOpacity
+                            style={styles.card}
+                            onPress={() => this.onPressItem(item)}>
                             <DeckCard
                                 item={item}
                                 fontSize={24} />

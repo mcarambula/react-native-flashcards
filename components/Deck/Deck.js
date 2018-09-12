@@ -9,9 +9,14 @@ import generalStyles from '../General/General.style';
 import * as nav from '../../utils/navigation';
 
 class Deck extends Component {
-    showCardView = (deck) => {
+    /*
+        This functions allows to navigate to the form
+        where the user will be able to add a new card to the deck
+     */
+    addCardView = (deck) => {
         this.props.navigation.navigate(nav.ADD_CARD_VIEW_KEY, {'deckId': deck.title});
     }
+    /* This functions allows to navigate to the quiz */
     showQuizView = (deck) => {
         this.props.navigation.navigate(nav.QUIZ_VIEW_KEY, {'deckId': deck.title});
     }
@@ -22,7 +27,8 @@ class Deck extends Component {
             <View style={[generalStyles.container, generalStyles.insideContainer]}>
                 <DeckCard item={deck} />
                 <View style={generalStyles.btnContainer}>
-                    <Outlined onPress={() => this.showCardView(deck)}>Add Card</Outlined>
+                    <Outlined onPress={() => this.addCardView(deck)}>Add Card</Outlined>
+                    { /* Showing the quiz only if the deck has at least one card */}
                     { deck.questions.length > 0 &&
                         <Filled onPress={() => this.showQuizView(deck)}  style={{marginTop: 10}}>Start Quiz</Filled>
                     }

@@ -1,3 +1,4 @@
+/* Const used to avoid typos on navigation keys */
 export const HOME_VIEW_KEY = 'Home';
 export const DECK_VIEW_KEY = 'Deck';
 export const ADD_CARD_VIEW_KEY = 'AddCard';

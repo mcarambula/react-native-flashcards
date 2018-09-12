@@ -13,6 +13,7 @@ import { handleInitialData } from '../../actions';
 import * as nav from '../../utils/navigation';
 import * as appColors from '../../utils/appColors';
 
+/* Tabs for android devices */
 const AndroidTab = createMaterialTopTabNavigator({
         Decks: {
             screen: DeckList,
@@ -51,6 +52,8 @@ const AndroidTab = createMaterialTopTabNavigator({
     }
 );
 
+
+/* Tabs for iOS devices */
 const IOSTab = createBottomTabNavigator({
         Decks: {
             screen: DeckList,
@@ -77,7 +80,7 @@ const IOSTab = createBottomTabNavigator({
         activeTintColor: appColors.primary,
         style: {
             height: 60,
-            backgroundColor: 'white',
+            backgroundColor: appColors.white,
             shadowColor: 'rgba(0, 0, 0, 0.24)',
             shadowOffset: {
                 width: 0,
@@ -104,7 +107,7 @@ const Navigator = createStackNavigator(
             screen: Deck,
             title: 'Deck',
             navigationOptions:{
-                headerTintColor: 'white',
+                headerTintColor: appColors.white,
                 headerStyle:{
                     backgroundColor: appColors.headerBackground
                 },
@@ -115,7 +118,7 @@ const Navigator = createStackNavigator(
         AddCard: {
             screen: AddCard,
             navigationOptions:{
-                headerTintColor: 'white',
+                headerTintColor: appColors.white,
                 headerStyle:{
                     backgroundColor: appColors.headerBackground
                 },
@@ -153,7 +156,6 @@ class MainNavigator extends Component {
         return <Navigator />
     }
 }
-
 
 const mapDispatchToProps = { handleInitialData };
 

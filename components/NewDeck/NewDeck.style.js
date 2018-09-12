@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import * as appColors from '../../utils/appColors';
 
 const styles = StyleSheet.create({
     questionText: {
@@ -6,7 +7,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     error: {
-        color: 'red'
+        color: appColors.red
     }
 });
 

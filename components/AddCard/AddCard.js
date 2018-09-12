@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Text, KeyboardAvoidingView, TextInput, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 import * as appColors from '../../utils/appColors';
-import Filled from '../TextButton/Filled';
 import { addQuestion } from '../../actions';
 import { createQuestion } from '../../utils/api';
+import Filled from '../TextButton/Filled';
 import generalStyles from '../General/General.style';
 import styles from './AddCard.style';
 
@@ -19,9 +19,9 @@ class AddCard extends Component {
     */
     submit = (deckId) => {
         const { question, answer } = this.state;
-        const { navigation } = this.props;
+        const { navigation, addQuestion } = this.props;
         createQuestion({question, answer, deckId}).then(() => {
-            this.props.addQuestion(deckId, {question, answer});
+            addQuestion(deckId, {question, answer});
             navigation.goBack();
         });
     }
@@ -33,6 +33,10 @@ class AddCard extends Component {
                 behavior='padding'
                 style={generalStyles.insideContainer}>
                     <Text style={styles.title}>{deckId}</Text>
+                    <Text style={styles.instructions}>
+                        Please fill the following
+                        information about the question you want to add to this deck.
+                    </Text>
                     <TextInput
                         style={generalStyles.txtInput}
                         editable={true}

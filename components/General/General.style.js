@@ -5,6 +5,9 @@ const styles = StyleSheet.create({
     app: {
         flex: 1
     },
+    flex: {
+        flex: 1
+    },
     container: {
         flex: 1,
         padding: 20
@@ -15,6 +18,10 @@ const styles = StyleSheet.create({
     },
     flexEnd: {
         justifyContent: 'flex-end'
+    },
+    centered: {
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     insideContainer: {
         flex: 1,

@@ -3,9 +3,10 @@ import * as appColors from '../../utils/appColors';
 
 const styles = StyleSheet.create({
     title: {
-        color: 'black',
+        color: appColors.primary,
         fontSize: 24,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: 'bold'
     },
     answer: {
         marginTop: 10,
@@ -15,8 +16,13 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         borderWidth: 1,
         borderRadius: 5,
-        borderColor: 'gray',
+        borderColor: appColors.gray,
         height: 80
+    },
+    instructions: {
+        textAlign: 'center',
+        color: appColors.gray,
+        marginTop: 10
     }
 });
 

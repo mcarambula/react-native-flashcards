@@ -2,6 +2,11 @@ import { StyleSheet } from 'react-native';
 import * as appColors from '../../utils/appColors';
 
 const styles = StyleSheet.create({
+    quiz: {
+        flex: 1,
+        backgroundColor: appColors.white,
+        padding: 20
+    },
     question: {
         flex: 4,
         alignItems: 'center',
@@ -50,6 +55,17 @@ const styles = StyleSheet.create({
         margin: 4,
         backgroundColor: appColors.gray,
         borderRadius: 5
+    },
+    score: {
+        fontSize: 30,
+        color: appColors.primary
+    },
+    icons: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 30,
+        marginTop: 30
     }
 });
 

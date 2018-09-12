@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
+import * as appColors from '../../utils/appColors';
 
 const styles = StyleSheet.create({
     card: {
         padding: 40,
-        backgroundColor: 'white',
+        backgroundColor: appColors.white,
         borderRadius: 5,
         margin: 5,
         shadowColor: '#000',

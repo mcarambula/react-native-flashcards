@@ -4,15 +4,16 @@ import { Notifications, Permissions } from 'expo';
 
 const NOTIFICATION_KEY = 'FlashCards:Notifications';
 
+/* Clear Local Notifications */
 export function clearLocalNotification () {
     return AsyncStorage
             .removeItem(NOTIFICATION_KEY)
             .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
-
+/* Object with the configuration of the local notification */
 function createNotification() {
     return {
-        title: "Don't forget your UdaciCards!",
+        title: "Don't forget your FlashCards!",
         body: "👋  It's time to study any of your flashcards today!",
         ios: {
             sound: true,
@@ -25,7 +26,7 @@ function createNotification() {
         }
     }
 }
-
+/* Setting the local notification */
 export function setLocalNotification() {
     AsyncStorage
         .getItem(NOTIFICATION_KEY)
@@ -37,9 +38,9 @@ export function setLocalNotification() {
                         if (status === 'granted') {
                             Notifications.cancelAllScheduledNotificationsAsync();
                             let tomorrow = new Date();
-                            tomorrow.setDate(tomorrow.getDate());
-                            tomorrow.setHours(17);
-                            tomorrow.setMinutes(45);
+                            tomorrow.setDate(tomorrow.getDate() + 1);
+                            tomorrow.setHours(18);
+                            tomorrow.setMinutes(30);
                             Notifications.scheduleLocalNotificationAsync(
                                 createNotification(), {
                                     time: tomorrow,
